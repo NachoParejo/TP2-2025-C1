@@ -52,3 +52,35 @@ const beers = [
     type: "Wheat",
   },
 ];
+
+const addPrices = (beersArray) => 
+  beersArray.map(beer => ({
+    ...beer,
+    price: beer.name === 'Purple Iris' ? 320 : beer.abv < 5 ? 300 : 350
+  }));
+
+console.table(addPrices(beers));
+
+  /**2.- Desarrolle una función que inserte la propiedad file_name a cada uno de los objetos, esta propiedad debe tener solo
+* el nombre del archivo de la propiedad label (upload_xOMnlK-large.png, etc..)
+* (map) */
+
+  const addFileName = (beersArray) => 
+      beersArray.map(beer => ({
+        name: beer.name,
+        abv: beer.abv,
+        type: beer.type,
+        file_name: beer.label.split('/').pop() 
+      }));
+
+   console.table(addFileName(beers));
+
+/**3.- Desarrollo una funcion que ordene por tipo (type)
+(sort) */
+
+const sortByType = (beersArray) => 
+  [...beersArray].sort((a, b) => a.type.localeCompare(b.type));
+
+
+console.table(sortByType(beers));
+
